@@ -1,0 +1,1 @@
+export default function LoadingSpinner() { return <div className="flex items-center justify-center gap-3 py-8 text-brand-700" role="status"><span className="h-6 w-6 animate-spin rounded-full border-4 border-brand-100 border-t-brand-700" /><span className="font-semibold">Consultando rastreamento...</span></div>; }
