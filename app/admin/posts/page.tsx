@@ -2,6 +2,8 @@ import { getAllPosts } from '@/lib/db';
 import Link from 'next/link';
 import DeleteButton from './DeleteButton';
 
+export const dynamic = 'force-dynamic';
+
 export default async function AdminPostsPage() {
   const posts = await getAllPosts();
   return (

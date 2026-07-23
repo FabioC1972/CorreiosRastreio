@@ -31,6 +31,7 @@ export async function initDb() {
 }
 
 export async function getAllPosts(onlyPublished = false) {
+  await initDb();
   const rows = onlyPublished
     ? await sql`SELECT * FROM posts WHERE published = true ORDER BY created_at DESC`
     : await sql`SELECT * FROM posts ORDER BY created_at DESC`;
