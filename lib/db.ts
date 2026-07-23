@@ -9,6 +9,7 @@ export type Post = {
   excerpt: string | null;
   content: string;
   cover_image: string | null;
+  category: string;
   published: boolean;
   created_at: string;
   updated_at: string;
@@ -50,11 +51,11 @@ export async function getPostById(id: number) {
 
 export async function createPost(data: {
   title: string; slug: string; excerpt: string; content: string;
-  cover_image: string | null; published: boolean;
+  cover_image: string | null; category: string; published: boolean;
 }) {
   const rows = await sql`
-    INSERT INTO posts (title, slug, excerpt, content, cover_image, published)
-    VALUES (${data.title}, ${data.slug}, ${data.excerpt}, ${data.content}, ${data.cover_image}, ${data.published})
+    INSERT INTO posts (title, slug, excerpt, content, cover_image, category, published)
+    VALUES (${data.title}, ${data.slug}, ${data.excerpt}, ${data.content}, ${data.cover_image}, ${data.category}, ${data.published})
     RETURNING *
   `;
   return rows[0] as unknown as Post;
@@ -62,11 +63,11 @@ export async function createPost(data: {
 
 export async function updatePost(id: number, data: {
   title: string; slug: string; excerpt: string; content: string;
-  cover_image: string | null; published: boolean;
+  cover_image: string | null; category: string; published: boolean;
 }) {
   const rows = await sql`
     UPDATE posts SET title=${data.title}, slug=${data.slug}, excerpt=${data.excerpt},
-      content=${data.content}, cover_image=${data.cover_image}, published=${data.published},
+      content=${data.content}, cover_image=${data.cover_image}, category=${data.category}, published=${data.published},
       updated_at=NOW()
     WHERE id=${id}
     RETURNING *

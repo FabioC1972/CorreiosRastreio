@@ -5,7 +5,7 @@ import ReactMarkdown from 'react-markdown';
 
 type Props = {
   postId?: number;
-  initial?: { title: string; slug: string; excerpt: string; content: string; cover_image: string | null; published: boolean };
+  initial?: { title: string; slug: string; excerpt: string; content: string; cover_image: string | null; category: string; published: boolean };
 };
 
 export default function PostForm({ postId, initial }: Props) {
@@ -15,6 +15,7 @@ export default function PostForm({ postId, initial }: Props) {
   const [excerpt, setExcerpt] = useState(initial?.excerpt ?? '');
   const [content, setContent] = useState(initial?.content ?? '');
   const [coverImage, setCoverImage] = useState(initial?.cover_image ?? '');
+  const [category, setCategory] = useState(initial?.category ?? 'Blog');
   const [published, setPublished] = useState(initial?.published ?? true);
   const [uploading, setUploading] = useState(false);
 
@@ -40,7 +41,7 @@ export default function PostForm({ postId, initial }: Props) {
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    const body = { title, slug, excerpt, content, cover_image: coverImage || null, published };
+    const body = { title, slug, excerpt, content, cover_image: coverImage || null, category, published };
     const url = postId ? `/api/posts/${postId}` : '/api/posts';
     const method = postId ? 'PUT' : 'POST';
     await fetch(url, { method, headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
@@ -56,6 +57,15 @@ export default function PostForm({ postId, initial }: Props) {
         style={{ width: '100%', padding: 8, marginBottom: 8 }} required />
       <textarea placeholder="Resumo curto" value={excerpt} onChange={(e) => setExcerpt(e.target.value)}
         style={{ width: '100%', padding: 8, marginBottom: 8 }} rows={2} />
+
+      <select value={category} onChange={(e) => setCategory(e.target.value)}
+        style={{ width: '100%', padding: 8, marginBottom: 8 }}>
+        <option value="Rastreamento">Rastreamento</option>
+        <option value="Importação">Importação</option>
+        <option value="Envios">Envios</option>
+        <option value="Ajuda">Ajuda</option>
+        <option value="Blog">Blog (geral)</option>
+      </select>
 
       <input type="file" accept="image/*" onChange={handleImageUpload} />
       {uploading && <p>Enviando imagem...</p>}

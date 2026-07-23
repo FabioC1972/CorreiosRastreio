@@ -15,6 +15,7 @@ export default async function EditPostPage({ params }: { params: Promise<{ id: s
         excerpt: post.excerpt ?? '',
         content: post.content,
         cover_image: post.cover_image,
+        category: post.category,
         published: post.published,
       }}
     />
