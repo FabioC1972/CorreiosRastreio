@@ -13,7 +13,11 @@
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-body { color: #172033; background: #f8fafc; }
+body {
+  color: #172033;
+  background: #f8fafc;
+  font-family: var(--font-geist);
+}
 a, button, input, textarea, select { outline-color: var(--accent); }
 
 .container-site { @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8; }

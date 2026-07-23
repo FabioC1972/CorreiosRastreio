@@ -1,0 +1,171 @@
+# Query: correio
+# ContextLines: 1
+
+57 resultados - 24 arquivos
+
+package-lock.json:
+  1  {
+  2:   "name": "correios-rastreio",
+  3    "version": "1.0.0",
+
+  7      "": {
+  8:       "name": "correios-rastreio",
+  9        "version": "1.0.0",
+
+package.json:
+  1  {
+  2:   "name": "correios-rastreio",
+  3    "version": "1.0.0",
+
+README.md:
+  1: # Correios Rastreio
+  2  
+
+app\layout.tsx:
+  5  import ServiceWorkerRegister from "@/components/ServiceWorkerRegister";
+  6: export const metadata: Metadata = { metadataBase: new URL("https://correiorastreio.com.br"), title: { default: "Correios Rastreio | Rastreie sua encomenda", template: "%s | Correios Rastreio" }, description: "Rastreie encomendas dos Correios, compras internacionais e importações gratuitamente.", openGraph: { type: "website", locale: "pt_BR", siteName: "Correios Rastreio", title: "Correios Rastreio", description: "Rastreie sua encomenda em segundos." }, manifest: "/manifest.json", icons: { icon: "/icon.svg" } };
+  7  export const viewport: Viewport = { themeColor: "#0A2463", width: "device-width", initialScale: 1 };
+
+app\page.tsx:
+    4  const carriers = [
+    5:   { name: "Correios", logo: "📦", status: "Disponível", active: true },
+    6    { name: "Jadlog", logo: "◆", status: "Em breve" },
+
+   63      title: "Objeto postado",
+   64:     location: "Agência dos Correios, São Paulo - SP",
+   65      date: "16/07/2026",
+
+   72      category: "Dicas",
+   73:     title: "Como rastrear encomendas dos Correios passo a passo",
+   74      time: "5 min de leitura",
+
+  105                  <p className="mt-5 max-w-xl text-base leading-7 text-slate-600 sm:text-lg">
+  106:                   Consulte qualquer código de rastreamento dos Correios e de
+  107                    outras transportadoras de forma{" "}
+
+  319                  <p className="mt-2 text-sm font-semibold text-[#173d6c]">
+  320:                   ◆ Correios
+  321                  </p>
+
+app\robots.ts:
+  1  import type { MetadataRoute } from "next";
+  2: export default function robots():MetadataRoute.Robots{return {rules:{userAgent:"*",allow:"/"},sitemap:"https://correiorastreio.com.br/sitemap.xml"};}
+
+app\sitemap.ts:
+  1  import type { MetadataRoute } from "next";
+  2: export default function sitemap():MetadataRoute.Sitemap{const base="https://correiorastreio.com.br";return ["","/blog","/sobre","/contato","/privacidade","/termos"].map((p)=>({url:`${base}${p}`,lastModified:new Date(),changeFrequency:p===""?"daily":"monthly",priority:p===""?1:.7}));}
+
+app\blog\page.tsx:
+  5  import CTABanner from "@/components/CTABanner";
+  6: export const metadata:Metadata={title:"Blog de rastreamento e entregas",description:"Dicas sobre Correios, rastreamento, importações, PAC, SEDEX e encomendas.",openGraph:{title:"Blog Correios Rastreio",description:"Guias e dicas para acompanhar suas encomendas."}};
+  7: export default function Blog(){return <section className="container-site py-16"><div className="max-w-3xl"><p className="font-bold uppercase tracking-widest text-accent-600">Central de ajuda</p><h1 className="section-title mt-3">Blog Correios Rastreio</h1><p className="mt-4 text-lg text-slate-600">Informação prática para entender cada status e resolver problemas com suas entregas.</p></div><div className="mt-12 grid gap-10 lg:grid-cols-[1fr_230px]"><div className="grid gap-7 md:grid-cols-2">{articles.map((a,i)=><div key={a.slug} className={i===2?"md:col-span-2 grid gap-7 md:grid-cols-2":""}>{i===2&&<BannerAd size="square" position="Meio dos artigos"/>}<ArticleCard article={a}/></div>)}</div><aside className="space-y-7"><div className="card p-5"><label htmlFor="blog-search" className="font-bold text-brand-900">Buscar no blog</label><input id="blog-search" type="search" placeholder="Digite um tema..." className="mt-3 w-full rounded-xl border border-slate-200 px-4 py-3 text-sm focus:border-brand-500 focus:ring-4 focus:ring-blue-100"/></div><div className="hidden justify-center lg:flex"><BannerAd size="vertical" position="Sidebar do blog"/></div><div className="card p-5"><h2 className="font-bold text-brand-900">Categor
+
+app\privacidade\page.tsx:
+  1  import type { Metadata } from "next";
+  2: export const metadata:Metadata={title:"Política de Privacidade",description:"Política de privacidade, cookies, Google AdSense e tratamento de dados no Correios Rastreio."};
+  3: export default function Privacidade(){return <section className="container-site py-16"><article className="card prose-site mx-auto max-w-4xl p-7 sm:p-12"><h1 className="section-title">Política de Privacidade</h1><p>Última atualização: 20 de julho de 2026.</p><h2>1. Informações gerais</h2><p>Esta Política explica como o Correios Rastreio trata informações durante a navegação. Buscamos coletar somente os dados necessários para operar, melhorar e proteger o site, respeitando a Lei Geral de Proteção de Dados Pessoais (LGPD).</p><h2>2. Códigos de rastreio</h2><p>Os códigos digitados são utilizados para realizar a consulta solicitada. Na versão inicial demonstrativa, os dados são processados localmente e não são armazenados. Em integrações futuras, o código poderá ser enviado ao provedor responsável pela consulta.</p><h2>3. Cookies e tecnologias semelhantes</h2><p>Podemos usar cookies essenciais, analíticos e publicitários para lembrar preferências, medir audiência, prevenir abusos e apresentar anúncios. O usuário pode controlar cookies nas configurações do navegador.</p><h2>4. Google AdSense e cookies de terceiros</h2><p>O site poderá utilizar o Google AdSense. O Google e outros fornecedores terceirizados podem usar cookies para veicular anúncios com base em visitas anteriores a este e a outros sites. Ess
+
+app\sobre\page.tsx:
+  2  import CTABanner from "@/components/CTABanner";
+  3: export const metadata:Metadata={title:"Sobre",description:"Conheça a missão do Correios Rastreio, ferramenta gratuita e independente para consulta de encomendas."};
+  4: export default function Sobre(){return <section className="container-site py-16"><div className="grid gap-10 lg:grid-cols-[1fr_360px]"><article className="card p-7 sm:p-10"><p className="font-bold uppercase tracking-widest text-accent-600">Quem somos</p><h1 className="section-title mt-3">Sobre o Correios Rastreio</h1><div className="prose-site"><p>O Correios Rastreio é uma ferramenta gratuita e independente criada para tornar o acompanhamento de encomendas mais simples. O site não possui vínculo oficial, parceria institucional ou representação dos Correios.</p><p>Nossa missão é ajudar pessoas a encontrarem rapidamente as informações mais importantes de seus pedidos, apresentando cada atualização de forma clara e fácil de entender. A plataforma foi pensada para funcionar bem no celular, no tablet e no computador.</p><p>Também produzimos conteúdos educativos sobre rastreamento, importações, prazos, modalidades de envio e soluções para situações comuns. À medida que o projeto evoluir, novas transportadoras e integrações poderão ser adicionadas.</p></div></article><aside><CTABanner eyebrow="Parceiro" title="Envie com economia" text="Compare PAC, SEDEX e transportadoras privadas em uma única cotação." button="Conhecer Melhor Envio" href="https://melhorenvio.com.br/afiliado" variant="orange"/></aside></div></section>}
+
+app\termos\page.tsx:
+  1  import type { Metadata } from "next";
+  2: export const metadata:Metadata={title:"Termos de Uso",description:"Termos e condições de uso da ferramenta Correios Rastreio."};
+  3: export default function Termos(){return <section className="container-site py-16"><article className="card prose-site mx-auto max-w-4xl p-7 sm:p-12"><h1 className="section-title">Termos de Uso</h1><p>Última atualização: 20 de julho de 2026.</p><h2>1. Aceitação</h2><p>Ao utilizar o Correios Rastreio, você declara estar de acordo com estes termos. Caso não concorde, interrompa o uso da plataforma.</p><h2>2. Natureza do serviço</h2><p>O site oferece uma interface independente para consulta e organização de informações de rastreamento. Não somos os Correios, uma transportadora ou operador logístico e não temos controle sobre postagem, transporte, fiscalização ou entrega.</p><h2>3. Precisão dos dados</h2><p>As informações podem depender de sistemas de terceiros e apresentar atrasos, indisponibilidades ou divergências. Nenhum prazo exibido deve ser interpretado como garantia de entrega.</p><h2>4. Responsabilidade do usuário</h2><p>O usuário deve fornecer códigos válidos e usar a ferramenta de forma lícita. É proibido tentar comprometer o site, automatizar consultas abusivas ou acessar dados de terceiros sem autorização.</p><h2>5. Isenção de responsabilidade</h2><p>Não nos responsabilizamos por atrasos, extravios, danos, tributos, decisões aduaneiras, perdas comerciais ou qualquer consequência decorrente do transporte ou do uso das informações exibidas.</p><h2>6. Publicidade e afiliados</h2><p>O site poderá exibir publicidade e links de afiliados. A contratação de produtos ou serviços ocorre diretamente com o parceiro responsável.</
+
+components\Logo.tsx:
+   5    return (
+   6:     <Link href="/" className="flex items-center gap-2" aria-label="Correios Rastreio - Página inicial">
+   7        <span className="grid h-10 w-10 place-items-center rounded-xl bg-brand-700 text-white shadow-lg shadow-blue-900/20">
+
+   9        </span>
+  10:       <span className="text-xl font-extrabold tracking-tight text-brand-900">Correio <span className="text-accent-500">Rastreio</span></span>
+  11      </Link>
+
+components\layout\Footer.tsx:
+  4  const links = [["Sobre", "/sobre"], ["Contato", "/contato"], ["Privacidade", "/privacidade"], ["Termos de Uso", "/termos"]];
+  5: ⟪ 268 characters skipped ⟫r_1fr_1fr]"><div><Logo /><p className="mt-4 max-w-md text-sm leading-6 text-slate-600">Ferramenta independente e gratuita para facilitar a consulta de encomendas. Não possuímos vínculo oficial com os Correios.</p></div><div><h2 className="font-bold text-brand-900">Links úteis</h2><ul className="mt-4 space-y-3">{links.map(([l,h])=><li key={h}><Link href={h} className="text-sm text-slate-600 hover:text-brand-700">{l}</Link></li>)}</ul></div><div><h2 className="font-bold text-brand-900">Redes sociais</h2><div className="mt-4 flex gap-3"><span className="grid h-10 w-10 place-items-center rounded-full bg-slate-100 text-sm font-bold text-brand-700">f</span><span className="grid h-10 w-10 place-items-center rounded-full bg-slate-100 text-sm font-bold text-brand-700">in</span><span className="grid h-10 w-10 place-items-center rounded-full bg-slate-100 text-sm font-bold text-brand-700">ig</span></div></div></div><p className="mt-10 border-t border-slate-100 pt-6 text-center text-xs text-slate-500">© {new Date().getFullYear()} Correios Rastreio. Todos os direitos reservados.</p></div></footer>; }
+
+config\providers.ts:
+  2    {
+  3:     id: "correios",
+  4:     name: "Correios",
+  5      active: true,
+
+config\seo.ts:
+  1  export const seoConfig = {
+  2:   defaultTitle: "Correios Rastreio",
+  3:   titleTemplate: "%s | Correios Rastreio",
+  4    description:
+  5:     "Rastreie encomendas dos Correios e acompanhe entregas de diversas transportadoras em um só lugar.",
+  6    keywords: [
+  7:     "correios",
+  8      "rastreio",
+
+config\site.ts:
+  1  export const siteConfig = {
+  2:   name: "Correios Rastreio",
+  3:   shortName: "Correios Rastreio",
+  4    description:
+  5      "Rastreie encomendas e acompanhe as principais informações sobre entregas e transportadoras.",
+  6:   url: "https://www.correiosrastreio.com.br",
+  7    locale: "pt-BR",
+
+data\articles.ts:
+   9  export const articles: Article[] = [
+  10:   { slug: "objeto-postado-correios", title: "O que significa 'Objeto Postado' nos Correios?", date: "18 de julho de 2026", excerpt: "Entenda essa primeira etapa do rastreamento e saiba quanto tempo costuma levar até a próxima atualização.", category: "Rastreamento" },
+  11    { slug: "encomenda-fiscalizacao-aduaneira", title: "Encomenda parada na fiscalização aduaneira: o que fazer?", date: "16 de julho de 2026", excerpt: "Veja por que sua importação pode ficar retida, quais atualizações observar e quando é necessário agir.", category: "Importação" },
+
+data\tracking.ts:
+  51          status: "Objeto postado",
+  52:         location: "Agência dos Correios, São Paulo - SP",
+  53        },
+
+  72          time: "22:18",
+  73:         status: "Objeto recebido pelos Correios",
+  74          location: "Unidade Logística, Curitiba - PR",
+
+  79          status: "Objeto postado",
+  80:         location: "Agência dos Correios, Florianópolis - SC",
+  81        },
+
+docs\DESIGN_SYSTEM.md:
+  1: # Correios Rastreio — Design System
+  2  
+  3  ## 1. Direção visual
+  4: O Correios Rastreio deve transmitir:
+  5  
+
+docs\ROADMAP.md:
+  1: # Correios Rastreio - Roadmap
+  2  
+
+docs\ADR\ADR-001.md:
+   4  
+   5: Escolha do Next.js para o Correios Rastreio
+   6  
+
+  20  ## Contexto
+  21: O projeto Correios Rastreio precisava de uma tecnologia moderna, rápida, otimizada para SEO e de fácil hospedagem. Como objetivo, busca oferecer um portal de rastreamento de encomendas com excelente desempenho e capacidade de expansão futura.
+  22  
+  23  ## Decisão
+  24: Foi escolhido o framework Next.js como base do projeto Correios Rastreio por oferecer renderização otimizada para SEO, excelente desempenho, facilidade de hospedagem na Vercel e uma arquitetura moderna baseada em React.
+  25  
+
+docs\PRD\PRD-001.md:
+   4  
+   5: Homepage do Correios Rastreio
+   6  
+
+  15  
+  16: Homepage do Correios Rastreio
+  17  
+
+public\manifest.json:
+  1: {"name":"Correios Rastreio","short_name":"Rastreio","description":"Rastreie encomendas de forma rápida e gratuita.","start_url":"/","display":"standalone","background_color":"#f8fafc","theme_color":"#0A2463","icons":[{"src":"/icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]}
+
+public\sw.js:
+  1: const CACHE = "correio-rastreio-v1";
+  2  self.addEventListener("install", event => event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(["/", "/manifest.json", "/icon.svg"]))));

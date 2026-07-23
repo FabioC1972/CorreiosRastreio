@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import Logo from "./Logo";
+import Logo from "../Logo";
 
 const links = [
   ["Início", "/"], ["Blog", "/blog"], ["Sobre", "/sobre"], ["Contato", "/contato"]

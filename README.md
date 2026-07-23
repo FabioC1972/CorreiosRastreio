@@ -1,4 +1,4 @@
-# Correio Rastreio
+# Correios Rastreio
 
 Projeto completo em Next.js App Router, TypeScript e Tailwind CSS.
 
